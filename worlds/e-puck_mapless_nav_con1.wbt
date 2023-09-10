@@ -1,0 +1,122 @@
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "/home/levinin/PycharmProjects/webots_rl_structure/worlds/epuck/E-puck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/FormedConcrete.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/traffic/protos/TrafficCone.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/factory/containers/protos/CardboardBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/factory/containers/protos/WoodenBox.proto"
+
+WorldInfo {
+  info [
+    "Created by Andy Edmondson, 2023"
+  ]
+  title "Simple world model for mapless navigation."
+}
+Viewpoint {
+  fieldOfView 1.5707963267948966
+  orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
+  position 5.38828875615717e-16 -1.8741873934459723e-15 3.376235858698305
+  far 100
+  followType "None"
+}
+DirectionalLight {
+  direction 0 1 -1
+  intensity 2
+}
+RectangleArena {
+  rotation 0 1 0 0
+  floorSize 4 4
+  floorTileSize 1 1
+  floorAppearance FormedConcrete {
+  }
+  wallThickness 0.03
+  wallHeight 0.05
+}
+DEF OBS1 WoodenBox {
+  translation 0.96 0 0.3
+  name "wooden box(1)"
+  size 0.6 0.4 0.4
+}
+DEF OBS2 WoodenBox {
+  translation 0.1 0.81 0.2
+  size 0.4 0.4 0.4
+}
+DEF OBS3 CardboardBox {
+  translation -0.76 -0.35 0.2
+  size 0.4 0.2 0.4
+}
+DEF OBS4 CardboardBox {
+  translation 0.45 -1.02 0.2
+  name "cardboard box(1)"
+  size 0.4 0.4 0.4
+}
+DEF OBS5 CardboardBox {
+  translation 0.45 -1.02 0.2
+  name "cardboard box(2)"
+  size 0.4 0.4 0.4
+}
+DEF OBS6 CardboardBox {
+  translation 0.45 -1.02 0.2
+  name "cardboard box(3)"
+  size 0.4 0.4 0.4
+}
+DEF OBS7 CardboardBox {
+  translation 0.45 -1.02 0.2
+  name "cardboard box(4)"
+  size 0.4 0.4 0.4
+}
+DEF OBS8 CardboardBox {
+  translation -0.05 -1.02 0.2
+  name "cardboard box(5)"
+  size 0.4 0.4 0.4
+}
+DEF OBS9 CardboardBox {
+  translation 0.45 -1.02 0.2
+  name "cardboard box(6)"
+  size 0.4 0.4 0.4
+}
+DEF OBS10 CardboardBox {
+  translation 0.45 -1.02 0.2
+  name "cardboard box(7)"
+  size 0.4 0.4 0.4
+}
+DEF TARGET TrafficCone {
+  translation 1.62392 -1.5 -0.4518
+  rotation 0 1 0 0
+}
+DEF SUPER Robot {
+  translation 0 0 0.41
+  children [
+    Receiver {
+      channel 20
+    }
+    Emitter {
+      channel 19
+    }
+    Display {
+      width 500
+      height 150
+    }
+  ]
+  name "Supervisor"
+  controller "supervisor_ddpg"
+  supervisor TRUE
+}
+DEF EPUCK E-puck {
+  translation -0.98 1.0200000000177594 -6.396198618728068e-05
+  rotation 1 0 0 2.4431991344770527e-09
+  controller "epuck_controller_ddpg"
+  distance_sensor_numberOfRays 5
+  emitter_channel 20
+  receiver_channel 19
+  turretSlot [
+    Compass {
+    }
+  ]
+  groundSensorsSlot [
+    GPS {
+      rotation 0 1 0 0
+    }
+  ]
+}
