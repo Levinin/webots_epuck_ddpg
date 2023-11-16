@@ -83,7 +83,7 @@ Install PyTorch from [here](https://pytorch.org/get-started/locally/).
 Clone this repository and open it in your IDE.
 
 ```bash
-git clone git@github.com:Levinin/webots_rl_structure.git
+git clone git@github.com:Levinin/webots_epuck_ddpg.git
 ```
 
 Open Webots and load the world file [e-puck_mapless_nav_con1.wbt](worlds%2Fe-puck_mapless_nav_con1.wbt)
